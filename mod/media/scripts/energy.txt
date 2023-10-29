@@ -1,0 +1,34 @@
+module Base {
+    imports {
+      Base
+    }
+
+    item EnergyDrink
+    {
+        DisplayName = Spiffo's Energy Boost,
+        DisplayCategory = Food,
+        Type = Food,
+        Weight = 0.8,
+        Icon = Pop4,
+        EvolvedRecipe = Beverage:4;Beverage2:4,
+        FoodType = SoftDrink,
+        CantBeFrozen = TRUE,
+        EatType = bottle,
+        Packaged = TRUE,
+        ReplaceOnUse = PopBottleEmpty,
+        HungerChange = -10,
+        ThirstChange = -60,
+        UnhappyChange = -10,
+        FatigueChange = -60,
+        EnduranceChange = 10,
+        Calories = 400,
+        Carbohydrates = 104,
+        Lipids = 0,
+        Proteins = 0,
+        CustomContextMenu = Drink,
+        CustomEatSound = DrinkingFromBottlePlastic,
+        StaticModel = SpiffoEnergyDrinkBottle,
+        WorldStaticModel = SpiffoEnergyDrinkBottle,
+        OnEat = OnEatEnergyDrink
+    }
+}

@@ -1,0 +1,7 @@
+module Base
+{
+  model SpiffoEnergyDrinkBottle {
+    mesh = SpiffoEnergyDrinkBottle,
+    texture = SpiffoEnergyDrinkBottle
+  }
+}
