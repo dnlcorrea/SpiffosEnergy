@@ -1,15 +1,15 @@
-module Base {
+module SpiffoEnergyBooster {
     imports {
       Base
     }
 
-    item EnergyDrink
+    item EnergyDrinkBottle
     {
         DisplayName = Spiffo's Energy Boost,
         DisplayCategory = Food,
         Type = Food,
         Weight = 0.8,
-        Icon = Pop4,
+        Icon = EnergyDrink,
         EvolvedRecipe = Beverage:4;Beverage2:4,
         FoodType = SoftDrink,
         CantBeFrozen = TRUE,

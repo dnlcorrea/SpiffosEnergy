@@ -1,26 +1,29 @@
-fatigueHours = 0
-
 ---OnEatEnergyDrink
----@param food table
+---@param food Food
 ---@param character IsoGameCharacter
----@param percent table
+---@param percent float
 function OnEatEnergyDrink(food, character, percent)
     ---@type Stats
-    stats = character:getStats()
+    local stats = character:getStats()
+    ---@type BodyDamage
+    local damage = character:getBodyDamage()
+    local hoursSinceDrink = 0
+    local fatigueModifier = 0.2
 
-    fatigueYo = function()
-        fatigueHours = fatigueHours + 1;
+    damage:setFoodSicknessLevel(damage:getFoodSicknessLevel() + (50 * percent))
 
-        if (fatigueHours >= 8) then
-            fatigueHours = 0
-            Events.EveryHour.Remove(fatigueYo)
+    local function FatigueSideEffects()
+        hoursSinceDrink = hoursSinceDrink + 1;
+
+        if (hoursSinceDrink >= 8) then
+            Events.EveryTenMinutes.Remove(FatigueSideEffects)
             return
         end
 
-        if fatigueHours > 4 then
-            stats:setFatigue(stats:getFatigue() + 0.33)
+        if hoursSinceDrink > 3 then
+            stats:setFatigue(stats:getFatigue() + (fatigueModifier * percent))
         end
     end
 
-    Events.EveryHour.Add(fatigueYo)
+    Events.EveryTenMinutes.Add(FatigueSideEffects)
 end
